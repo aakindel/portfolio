@@ -1,7 +1,19 @@
 <template>
   <div>
+    <appNav></appNav>
   </div>
 </template>
+
+<script>
+import appNav from './components/Nav'
+
+export default {
+  components: {
+    appNav
+  }
+}
+
+</script>
 
 <style>
 * {
