@@ -20,14 +20,15 @@
 // requires body selector (outside of immediate scope)
 // to have a transition property of $smooth-speed seconds
 
-$toggle-dimensions: 48px;
-$arc-dimensions: 16px;
-$ray-height: 2px;
-$ray-width: 6px;
+// toggle could misrender for some px sizes of $toggle-dimensions (e.g. 40px)
+$toggle-dimensions: 35px;
+$arc-dimensions: $toggle-dimensions / 2;
+$ray-height: $arc-dimensions / 8;
+$ray-width: $ray-height * 3;
 $no-opacity: 0;
 $light-opacity: 0.25;
 $full-opacity: 1;
-$ray-dist-from-sun: 14px;
+$ray-dist-from-sun: $arc-dimensions * 0.8;
 $smooth-speed: 0.3s;
 $quick-speed: 0.2s;
 $light-color: #f5f5f5;
@@ -77,12 +78,12 @@ body.dark-mode .dmtoggle .arc {
 
 .dmtoggle .darc {
   background: $light-bg-color; // hide the "moon bite" in light mode
-  transform: translateX(24px);  // "moon bite" moves out and to the right
+  transform: translateX($arc-dimensions*2);  // "moon bite" moves out and to the right
 }
 
 body.dark-mode .dmtoggle .darc {
   background: $darker-color;  // show the "moon bite" in dark mode
-  transform: translateX(6px); // offset .darc by 6px to make crescent moon shape
+  transform: translateX($arc-dimensions/2.5); // offset .darc to make crescent moon shape
 }
 
 .dmtoggle .ray {
