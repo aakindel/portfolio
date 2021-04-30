@@ -25,6 +25,7 @@ $smooth-speed: 0.3s;
 }
 body {
   transition: $smooth-speed;
+  overflow: hidden;  // prevent mobile nav circles from causing scrollbar
 }
 
 body.dark-mode {

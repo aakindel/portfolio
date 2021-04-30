@@ -1,12 +1,24 @@
 <template>
   <nav>
     <darkModeToggle></darkModeToggle>
-    <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
-    <div id="ham-menu" v-on:click="toggleHam">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+
+    <div class="ham-container">
+      <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
+      <div id="ham-menu" v-on:click="toggleHam">
+        <span></span>  <!-- 1st bar in ham menu -->
+        <span></span>  <!-- 2nd bar in ham menu, left part of X close button -->
+        <span></span>  <!-- right part of X close button -->
+        <span></span>  <!-- 3rd bar in ham menu -->
+      </div>
+
+      <!-- circle from https://codepen.io/sergioandrade/pen/onkub -->
+      <div id="circle">
+        <div class="nav-items">
+          <ul>
+            <li :key="item" v-for="item in headerNavItems"><a :href="item.link" :target="item.target">{{item.title}}</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -74,18 +86,103 @@ nav {
   transform: rotate(-45deg);
 }
 
+.ham-container {
+  position: relative;
+}
+
+#circle {
+  position: absolute;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  right: -100px;
+  top: -100px;
+  transition: 0.2s ease;
+  z-index: -1;
+}
+
+#circle .nav-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-right: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+}
+
+#circle .nav-items li {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 20px;
+  display: none;
+}
+
+#circle .nav-items li:last-child {
+  margin-bottom: 0px;
+}
+
+#circle::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  right: 0px;
+  top: 20px;
+  z-index: -2;
+  transition: 0.1s;
+}
+
+#circle.open {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  background-color: rgba(73, 135, 202, 0.24);
+  color: white;
+}
+
+#circle.open::after {
+  height: 500px;
+  width: 500px;
+  background-color: rgba(73, 135, 202, 0.34);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -1;
+}
+
+#circle.open .nav-items li {
+  display: block;
+}
+
 </style>
 
 <script>
 import darkModeToggle from './DarkModeToggle'
 
 export default {
+  data () {
+    return {
+      headerNavItems: [
+        { title: 'About', link: '/#about', target: '_self' },
+        { title: 'Projects', link: '/#projects', target: '_self' },
+        { title: 'Contact', link: '/#contact', target: '_self' },
+        { title: 'Resume', link: '../assets/resume.pdf', target: '_blank' }
+      ]
+    }
+  },
   components: {
     darkModeToggle
   },
   methods: {
     toggleHam () {
       document.getElementById('ham-menu').classList.toggle('open')
+      document.getElementById('circle').classList.toggle('open')
     }
   }
 }
