@@ -31,4 +31,9 @@ body {
 body.dark-mode {
   background: #212121;
 }
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
 </style>

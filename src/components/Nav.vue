@@ -1,6 +1,8 @@
 <template>
-  <nav>
+  <nav class="container">
     <darkModeToggle></darkModeToggle>
+
+    <div class="page-title">Yoa Kinaleed</div>
 
     <div class="ham-container">
       <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
@@ -13,11 +15,12 @@
 
       <!-- circle from https://codepen.io/sergioandrade/pen/onkub -->
       <div id="circle">
-        <div class="nav-items">
-          <ul>
-            <li :key="item" v-for="item in headerNavItems"><a :href="item.link" :target="item.target">{{item.title}}</a></li>
-          </ul>
-        </div>
+      </div>
+
+      <div id="nav-items">
+        <ul>
+          <li :key="item" v-for="item in headerNavItems"><a :href="item.link" :target="item.target">{{item.title}}</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -31,11 +34,20 @@ $ham-width: $ham-height * 1.3;
 $ham-bar-height: $ham-height / 7;  // ham: bar, space, bar, space, bar
 $ham-color: #d3531a;
 
+.page-title {
+  font-size: 1.2rem;
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  // height: 50px;
+  padding: 20px 0;
+}
+
+.ham-container {
+  position: relative;
 }
 
 #ham-menu {
@@ -43,6 +55,7 @@ nav {
   height: $ham-height;
   position: relative;
   cursor: pointer;
+  z-index: 5;
 }
 
 #ham-menu span {
@@ -93,22 +106,36 @@ nav {
 #circle {
   position: absolute;
   border-radius: 50%;
-  height: 150px;
-  width: 150px;
+  height: 0px;
+  width: 0px;
   right: -100px;
   top: -100px;
   transition: 0.2s ease;
   z-index: -1;
 }
 
-#circle .nav-items {
+#nav-items {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 10px;
-  padding-right: 10px;
+  top: 0px;
+  right: 0px;
+  height: 400px;
+  width: 400px;
+}
+
+#nav-items ul {
+  // position: absolute;
+  // right: 500px;
   height: 100%;
   width: 100%;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 a {
@@ -117,14 +144,50 @@ a {
   color: white;
 }
 
-#circle .nav-items li {
+#nav-items li {
   list-style-type: none;
   text-align: center;
-  margin-bottom: 20px;
-  display: none;
+  margin-right: -500px;
+  margin-bottom: 30px;
+  transition: 0.3s;
+  opacity: 0;
+
+  &:nth-child(1){
+    transition-delay: 0.0s;
+  }
+  &:nth-child(2){
+    transition-delay: 0.0s;
+  }
+  &:nth-child(3){
+    transition-delay: 0.0s;
+  }
+  &:nth-child(4){
+    transition-delay: 0.0s;
+  }
 }
 
-#circle .nav-items li:last-child {
+#nav-items.open li {
+  list-style-type: none;
+  text-align: center;
+  opacity: 1;
+  margin-right: 0px;
+  margin-bottom: 30px;
+
+  &:nth-child(1){
+    transition-delay: 0.05s;
+  }
+  &:nth-child(2){
+    transition-delay: 0.10s;
+  }
+  &:nth-child(3){
+    transition-delay: 0.15s;
+  }
+  &:nth-child(4){
+    transition-delay: 0.20s;
+  }
+}
+
+#nav-items li:last-child {
   margin-bottom: 0px;
 }
 
@@ -156,7 +219,7 @@ a {
   z-index: -1;
 }
 
-#circle.open .nav-items li {
+#circle.open #nav-items li {
   display: block;
 }
 
@@ -183,6 +246,15 @@ export default {
     toggleHam () {
       document.getElementById('ham-menu').classList.toggle('open')
       document.getElementById('circle').classList.toggle('open')
+      document.getElementById('nav-items').classList.toggle('open')
+    },
+    removeHam () {
+      // if (document.getElementById('nav-items').classList.contains('open')) {
+      //   document.getElementById('ham-menu').classList.toggle('open')
+      //   document.getElementById('circle').classList.toggle('open')
+      //   document.getElementById('nav-items').classList.toggle('open')
+      // }
+      console.log(document.getElementById('nav-items').classList.contains('open'))
     }
   }
 }
