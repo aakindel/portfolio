@@ -3,6 +3,7 @@
     <appNav></appNav>
     <appHero></appHero>
     <appAbout></appAbout>
+    <appProjects></appProjects>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import appNav from './components/Nav'
 import appHero from './components/Hero'
 import appAbout from './components/About'
+import appProjects from './components/Projects'
 
 export default {
   components: {
     appNav,
     appHero,
-    appAbout
+    appAbout,
+    appProjects
   }
 }
 
