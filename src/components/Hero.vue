@@ -17,7 +17,7 @@
 
 .hero-section {
   position: static;
-  min-height: calc(100vh - 100px);  /* push hero section up */
+  min-height: calc(100vh - 80px);  /* 100vh - nav bar height */
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,7 +33,7 @@
 .subheading {
   font-size: clamp(1.0rem, 2.3vw, 1.2rem);
   font-weight: $normal-font-weight;
-  line-height: clamp(1.8rem, 8vw, 2.1rem);
+  line-height: clamp(1.8rem, 1vw, 2.1rem);
   margin-top: 20px;
   letter-spacing: 0.05rem;
   max-width: 600px;
