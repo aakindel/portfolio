@@ -5,6 +5,7 @@
     <appAbout></appAbout>
     <appProjects></appProjects>
     <appContact></appContact>
+    <appFooter></appFooter>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import appHero from './components/Hero'
 import appAbout from './components/About'
 import appProjects from './components/Projects'
 import appContact from './components/Contact'
+import appFooter from './components/Footer'
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     appHero,
     appAbout,
     appProjects,
-    appContact
+    appContact,
+    appFooter
   }
 }
 
