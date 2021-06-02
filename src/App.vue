@@ -2,17 +2,20 @@
   <div>
     <appNav></appNav>
     <appHero></appHero>
+    <appAbout></appAbout>
   </div>
 </template>
 
 <script>
 import appNav from './components/Nav'
 import appHero from './components/Hero'
+import appAbout from './components/About'
 
 export default {
   components: {
     appNav,
-    appHero
+    appHero,
+    appAbout
   }
 }
 
