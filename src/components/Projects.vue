@@ -255,18 +255,10 @@ button {
     z-index: -2;
   }
 
-  .box {
-    /* position: relative; */
-  }
-
   .word-box {
     width: 40%;
     display: flex;
     flex-direction: column;
-  }
-
-  .wbp {
-    /* margin-top: auto; */
   }
 
   .external-links {
