@@ -32,7 +32,7 @@ $ray-dist-from-sun: $arc-dimensions * 0.8;
 $smooth-speed: 0.3s;
 $quick-speed: 0.2s;
 $light-color: #f5f5f5;
-$light-bg-color: white;
+$light-bg-color: var(--bg-color);;
 $dark-color: #424242;
 $darker-color: #212121;
 
@@ -48,7 +48,7 @@ $darker-color: #212121;
   transition: transform $smooth-speed, opacity $quick-speed;
 }
 
-body.dark-mode .dmtoggle {
+:root.dark-mode .dmtoggle {
   transform: rotate(-45deg);
 }
 
@@ -62,7 +62,7 @@ body.dark-mode .dmtoggle {
   transition: transform $smooth-speed, background $smooth-speed, opacity $smooth-speed;
 }
 
-body.dark-mode .dmtoggle div {
+:root.dark-mode .dmtoggle div {
   background: $light-color;
 }
 
@@ -72,7 +72,7 @@ body.dark-mode .dmtoggle div {
   border-radius: $arc-dimensions;
 }
 
-body.dark-mode .dmtoggle .arc {
+:root.dark-mode .dmtoggle .arc {
   transform: scale(1.2);  // make the crescent moon circle bigger
 }
 
@@ -81,7 +81,7 @@ body.dark-mode .dmtoggle .arc {
   transform: translateX($arc-dimensions*2);  // "moon bite" moves out and to the right
 }
 
-body.dark-mode .dmtoggle .darc {
+:root.dark-mode .dmtoggle .darc {
   background: $darker-color;  // show the "moon bite" in dark mode
   transform: translateX($arc-dimensions/2.5); // offset .darc to make crescent moon shape
 }
@@ -101,7 +101,7 @@ body.dark-mode .dmtoggle .darc {
 .dmtoggle .ray.seven { transform: rotate(270deg) translateX($ray-dist-from-sun); }
 .dmtoggle .ray.eight { transform: rotate(315deg) translateX($ray-dist-from-sun); }
 
-body.dark-mode .dmtoggle .ray {
+:root.dark-mode .dmtoggle .ray {
   transform: scaleX(0.01);  // make the rays "invisibly" thin
   opacity: $no-opacity;
 }
@@ -112,7 +112,7 @@ body.dark-mode .dmtoggle .ray {
 export default {
   methods: {
     toggleDarkTheme () {
-      document.body.classList.toggle('dark-mode')
+      document.documentElement.classList.toggle('dark-mode')
     }
   }
 }

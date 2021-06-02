@@ -1,1 +1,95 @@
 // GLOBAL VARIABLES
+
+$smooth-speed: 0.3s;  // for dark mode icon and color transition
+$bold-font-weight: 900;
+$normal-font-weight: 400;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: #2c3e50;
+  --active-text-color: #f1f0f0;
+  --bg-color: #f3f3f3;
+  --light-accent-color: #7d9afa;
+  --accent-color: #5b8bf3;
+}
+
+:root.dark-mode {
+  --text-color: #d9dee2;
+  --bg-color: #212121;
+}
+
+body {
+  transition: $smooth-speed;
+  overflow: hidden;  // prevent mobile nav circles from causing scrollbar
+  background: var(--bg-color);
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+button {
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  padding: 1.25rem 1.75rem;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 45px 0;
+  transition: $smooth-speed;
+}
+
+.passive-cta {
+  color: var(--accent-color);
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+}
+
+.passive-cta:hover {
+  color: var(--active-text-color);
+  background-color: var(--light-accent-color);
+}
+
+.active-cta {
+  color: var(--active-text-color);
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.active-cta:hover {
+  color: var(--active-text-color);
+  background-color: var(--light-accent-color);
+}
+
+/* use css vars instead of scss vars for colors because:
+
+// USING SCSS VARIABLE
+
+body {
+  $text-color: #2c3e50;
+}
+
+body {
+  color: $text-color;  // error, undefined variable
+}
+
+// USING CSS VARIABLE
+
+body {
+  --text-color: #2c3e50;
+}
+
+body {
+  color: var(--text-color);  // works fine
+}
+
+*/

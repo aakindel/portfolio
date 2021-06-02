@@ -19,24 +19,10 @@ export default {
 </script>
 
 <style lang="scss">
-$smooth-speed: 0.3s;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  transition: $smooth-speed;
-  overflow: hidden;  // prevent mobile nav circles from causing scrollbar
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // color: #2c3e50;
 }
 
-body.dark-mode {
-  background: #212121;
-}
-
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
 </style>
