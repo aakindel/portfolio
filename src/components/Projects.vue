@@ -120,18 +120,11 @@ export default {
   display: block;
   font-size: 25px;
   font-weight: bold;
-  // margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
-.pic {
-  max-height: 100%;
-  max-width: 100%;
-  display: block;
-  transition: 0.3s;
-  border-radius: 5px;
-  filter: grayscale(40%) blur(0.6px);
-  // opacity: 0.25;
-  z-index: -2;
+.wbp {
+  margin-bottom: 25px;
 }
 
 .img-box {
@@ -149,6 +142,18 @@ export default {
   z-index: 1;
 }
 
+.pic {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;  // pic is vert. centered if text overflows
+  display: block;
+  transition: 0.3s;
+  border-radius: 5px;
+  filter: grayscale(40%) blur(0.6px);
+  // opacity: 0.25;
+  z-index: -2;
+}
+
 .project-content:hover {
   filter: grayscale(0%) blur(0px);
   // opacity: 0.25;
@@ -156,11 +161,14 @@ export default {
 }
 
 .word-box {
-  grid-area: 2 / 1 / 8/ 13;
+  // grid-area: 2 / 1 / 8/ 13;
+  grid-column: 1 / -1;
+  // grid-row: 3 / 7;
+  grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: space-between;
+  justify-content: center;
+  // gap: space-between;
   color: var(--sharp-text-color);
   // margin-top: 15px;
   padding: 0 40px;
@@ -169,8 +177,8 @@ export default {
 
 .external-links {
   // margin-top: 15px;
-  // margin-bottom: 15px;
   display: flex;
+  margin-bottom: 15px;
 }
 
 .external-links span:not(:last-of-type) {
