@@ -2,7 +2,7 @@
   <nav class="container">
     <darkModeToggle class="mobile-dark"></darkModeToggle>
 
-    <div class="page-title">Ayo Akindele</div>
+    <a href="/"><div class="page-title">Ayo Akindele</div></a>
 
     <div class="ham-container">
       <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
@@ -38,6 +38,11 @@ $ham-color: #d3531a;
 
 .page-title {
   font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .mobile-dark {
@@ -126,7 +131,7 @@ nav {
 
 #nav-items {
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   top: 0px;
@@ -183,6 +188,10 @@ li a:hover {
   &:nth-child(4){
     transition-delay: 0.0s;
   }
+}
+
+#nav-items.open {
+  display: flex;
 }
 
 #nav-items.open li {
@@ -253,6 +262,7 @@ li a:hover {
   }
 
   #nav-items {
+    display: flex;
     position: relative;  // undo mobile absolute positioning
     height: inherit;  // undo mobile fill-container height
   }
