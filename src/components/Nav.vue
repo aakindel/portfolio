@@ -19,6 +19,12 @@
 
       <div id="nav-items">
         <ul>
+          <li :key="item" v-for="item in headerNavItems"><a :href="item.link" :target="item.target" v-on:click="toggleHam">{{item.title}}</a></li>
+        </ul>
+      </div>
+
+      <div class="desktop-nav-items">
+        <ul>
           <li :key="item" v-for="item in headerNavItems"><a :href="item.link" :target="item.target">{{item.title}}</a></li>
         </ul>
       </div>
@@ -70,7 +76,7 @@ nav {
   height: $ham-height;
   position: relative;
   cursor: pointer;
-  z-index: 5;
+  z-index: 6;
 }
 
 #ham-menu span {
@@ -120,7 +126,7 @@ nav {
 
 #circle {
   position: absolute;
-  border-radius: 50%;
+  // border-radius: 50%;
   height: 0px;
   width: 0px;
   right: -100px;
@@ -131,9 +137,10 @@ nav {
 
 #nav-items {
   position: absolute;
-  display: none;
+  display: block;
   justify-content: center;
   align-items: center;
+  z-index: 5;
   top: 0px;
   right: 0px;
   height: 400px;
@@ -168,7 +175,7 @@ li a:hover {
 }
 
 #nav-items li {
-  display: none;
+  display: block;
   list-style-type: none;
   text-align: center;
   margin-right: -500px;
@@ -188,6 +195,10 @@ li a:hover {
   &:nth-child(4){
     transition-delay: 0.0s;
   }
+}
+
+.desktop-nav-items li {
+  display: none;
 }
 
 #nav-items.open {
@@ -219,10 +230,10 @@ li a:hover {
 #circle::after {
   content: '';
   position: absolute;
-  border-radius: 50%;
+  // border-radius: 50%;
   height: 150px;
   width: 150px;
-  right: 0px;
+  right: 10px;
   top: 20px;
   z-index: -2;
   transition: 0.1s;
@@ -230,18 +241,19 @@ li a:hover {
 
 #circle.open {
   position: absolute;
-  height: 500px;
-  width: 500px;
-  background-color: rgba(73, 135, 202, 0.24);
+  height: 490px;
+  width: 460px;
+  background-color: #324e8ba8;
   color: white;
+  z-index: 1;
 }
 
 #circle.open::after {
   height: 500px;
-  width: 500px;
-  background-color: rgba(73, 135, 202, 0.34);
+  width: 420px;
+  background-color: #324e8ba8;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: -1;
+  z-index: 2;
 }
 
 #circle.open #nav-items li {
@@ -261,13 +273,17 @@ li a:hover {
     display: none;
   }
 
-  #nav-items {
+  .desktop-nav-items {
     display: flex;
     position: relative;  // undo mobile absolute positioning
     height: inherit;  // undo mobile fill-container height
+    z-index: 5;
+    width: 400px;
   }
 
-  #nav-items ul {
+  .desktop-nav-items ul {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -276,7 +292,7 @@ li a:hover {
     align-items: center;
   }
 
-  #nav-items ul li, #nav-items.open ul li {
+  .desktop-nav-items ul li, #nav-items.open ul li {
     list-style-type: none;
     display: inline-block;
     text-align: center;
