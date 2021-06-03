@@ -13,8 +13,10 @@ $normal-font-weight: 400;
 
 :root {
   --text-color: #2c3e50;
+  --sharp-text-color: #000000;
   --active-text-color: #f1f0f0;
   --bg-color: #f3f3f3;
+  --bg-color-faded: #f3f3f3d2;
   --accent-color: #e06d2a;
   --light-accent-color: #d3511a6c;
   // --light-accent-color: #eeb99b;
@@ -23,7 +25,9 @@ $normal-font-weight: 400;
 
 :root.dark-mode {
   --text-color: #d9dee2;
+  --sharp-text-color: var(--text-color);
   --bg-color: #212121;
+  --bg-color-faded: #212121d2;
   --accent-color: #c45e24;
 }
 
@@ -37,29 +41,22 @@ body {
 .container {
   width: 90%;
   margin: 0 auto;
+  max-width: 1000px;
 }
 
-// .container-thin {
-//   width: 70%;
-//   margin: 0 auto;
-// }
-
-// @media (min-width: 1080px) {
-//   .container {
-//     width: 70%;
-//   }
-//   .container-thin {
-//     width: 70%;
-//   }
-// }
+.container-thin {
+  width: 70%;
+  margin: 0 auto;
+}
 
 .sh_container {
   margin-top: 75px;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
 .section-heading {
   font-size: 2.2rem;
+  letter-spacing: 1px;
   position: relative;
   text-transform: uppercase;
   color: var(--text-color);
@@ -78,6 +75,22 @@ body {
   width: 90%;
   top: 50%;
   z-index: -1;
+}
+
+@media (min-width: 1080px) {
+  .container {
+    width: 70%;
+  }
+  .container-thin {
+    width: 70%;
+  }
+  .sh_container {
+    margin-top: 175px;
+    margin-bottom: 75px;
+  }
+  .section-heading {
+    font-size: 2.7rem;
+  }
 }
 
 .sh_left {

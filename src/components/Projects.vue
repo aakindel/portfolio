@@ -8,7 +8,7 @@
           <span class="project-span"><h2 class="project-name">{{project.name}}</h2></span>
         </div>
         <div class="box word-box">
-          <span class="mobile-project-name">{{project.name}}</span>
+          <span class="mobile-project-name" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.name}}</span>
           <p class="wbp" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.description}}</p>
           <p class="external-links"
                    :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}"
@@ -31,11 +31,11 @@
         </div>
       </div>
     </div>
-    <a class="view-other" href="https://github.com/aakindel?tab=repositories" target="_blank">
-      <p>View my other projects on Github. <external class="svg-icon-stroke down-icon"></external></p>
-    </a>
+    <span class="view-other">
+    <a href="https://github.com/aakindel?tab=repositories" target="_blank">
+      <span>View my other projects on Github. <external class="svg-icon-stroke down-icon"></external></span>
+    </a></span>
   </div>
-  <div class="spacer"></div>
 </template>
 
 <script>
@@ -95,7 +95,7 @@ export default {
 
 .project-grid {
   display: grid;
-  grid-row-gap: 35px;
+  grid-row-gap: 65px;
   // grid-template-rows: 100px 1fr 100px;
   // grid-template-columns: 150px 1fr 150px;
 }
@@ -128,7 +128,30 @@ export default {
   max-width: 100%;
   display: block;
   transition: 0.3s;
-  opacity: 0.25;
+  border-radius: 5px;
+  filter: grayscale(40%) blur(0.6px);
+  // opacity: 0.25;
+  z-index: -2;
+}
+
+.img-box {
+  position: relative;
+}
+
+.img-box::before {
+  content: '';
+  display: block;
+  border-radius: 4px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color-faded);
+  z-index: 1;
+}
+
+.project-content:hover {
+  filter: grayscale(0%) blur(0px);
+  // opacity: 0.25;
   z-index: -2;
 }
 
@@ -138,6 +161,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   gap: space-between;
+  color: var(--sharp-text-color);
   // margin-top: 15px;
   padding: 0 40px;
   z-index: 2;
@@ -159,7 +183,10 @@ export default {
 
 .view-other {
   display: block;
-  margin-top: 65px;
+  margin-top: 50px;
+}
+
+.view-other a {
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--text-color);
@@ -176,7 +203,7 @@ export default {
   color: var(--primary-color);
 }
 
-.icon:hover, .view-other:hover {
+.icon:hover, .view-other a:hover {
   color: var(--accent-color);
 }
 
@@ -184,6 +211,7 @@ export default {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  // background: #7bcbfaa2;
   // margin-top: auto;
   font-size: 14px;
 }
@@ -207,7 +235,7 @@ button {
 
   .project-grid {
     display: grid;
-    grid-row-gap: 75px;
+    grid-row-gap: 100px;
   }
 
   .project-content {
@@ -252,7 +280,13 @@ button {
     margin-left: auto;
     margin-right: auto;
     transition: 0.3s;
+    filter: grayscale(0%) blur(0px);
+    opacity: 1;
     z-index: -2;
+  }
+
+  .img-box::before {
+    display: none;
   }
 
   .word-box {
@@ -274,14 +308,6 @@ button {
     width: 58%;
     display: flex;
     align-items: center;
-  }
-
-  .view-other {
-    display: block;
-    margin-top: 65px;
-    font-size: 1.2rem;
-    text-decoration: none;
-    color: var(--text-color);
   }
 
   .down-icon {

@@ -43,4 +43,16 @@
   margin-right: 20px;
 }
 
+@media (min-width: 1072px) {
+  .heading {
+    font-size: clamp(2.0rem, 5.3vw, 4rem);
+  }
+}
+
+@media (min-width: 1380px) {
+  .heading {
+    font-size: clamp(2.0rem, 5.8vw, 4rem);
+  }
+}
+
 </style>

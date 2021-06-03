@@ -21,13 +21,15 @@
 
 p {
   text-align: center;
-  width: 70%;
+  width: 75%;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.4rem;
   letter-spacing: 0.05rem;
 }
 
-
+.sh_container {
+  margin-bottom: 35px;
+}
 
 </style>

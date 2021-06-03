@@ -95,6 +95,12 @@ button {
     margin: 0 auto;
   }
 
+@media (min-width: 1080px) {
+  .sh_container {
+    margin-top: 125px;
+  }
+}
+
   .img-box {
     position: relative;
     margin: auto 0;
