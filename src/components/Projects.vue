@@ -154,11 +154,11 @@ export default {
   z-index: -2;
 }
 
-.project-content:hover {
-  filter: grayscale(0%) blur(0px);
-  // opacity: 0.25;
-  z-index: -2;
-}
+// .project-content:hover {
+//   filter: grayscale(0%) blur(0px);
+//   // opacity: 0.25;
+//   z-index: -2;
+// }
 
 .word-box {
   // grid-area: 2 / 1 / 8/ 13;
