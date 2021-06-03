@@ -1,8 +1,8 @@
 <template>
   <nav class="container">
-    <darkModeToggle></darkModeToggle>
+    <darkModeToggle class="mobile-dark"></darkModeToggle>
 
-    <div class="page-title">Yoa Kinaleed</div>
+    <div class="page-title">Ayo Akindele</div>
 
     <div class="ham-container">
       <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
@@ -23,6 +23,8 @@
         </ul>
       </div>
     </div>
+
+    <darkModeToggle class="desktop-dark"></darkModeToggle>
   </nav>
 </template>
 
@@ -36,6 +38,14 @@ $ham-color: #d3531a;
 
 .page-title {
   font-size: 1.2rem;
+}
+
+.mobile-dark {
+  display: flex;
+}
+
+.desktop-dark {
+  display: none;
 }
 
 nav {
@@ -131,6 +141,7 @@ nav {
   height: 100%;
   width: 100%;
   padding-left: 50px;
+  padding-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,13 +149,21 @@ nav {
   margin-bottom: 10px;
 }
 
-a {
+li a {
   text-decoration: none;
   font-size: 24px;
   color: white;
+  transition: 0.1s;
+}
+
+li a:hover {
+  color: var(--accent-color);
+  transition: 0.2s;
+  // text-decoration-thickness: 2px;
 }
 
 #nav-items li {
+  display: none;
   list-style-type: none;
   text-align: center;
   margin-right: -500px;
@@ -167,6 +186,7 @@ a {
 }
 
 #nav-items.open li {
+  display: block;
   list-style-type: none;
   text-align: center;
   opacity: 1;
@@ -185,10 +205,6 @@ a {
   &:nth-child(4){
     transition-delay: 0.20s;
   }
-}
-
-#nav-items li:last-child {
-  margin-bottom: 0px;
 }
 
 #circle::after {
@@ -223,6 +239,51 @@ a {
   display: block;
 }
 
+@media (min-width: 800px) {
+  .mobile-dark {
+    display: none;
+  }
+
+  .desktop-dark {
+    display: flex;
+  }
+
+  #ham-menu {
+    display: none;
+  }
+
+  #nav-items {
+    position: relative;  // undo mobile absolute positioning
+    height: inherit;  // undo mobile fill-container height
+  }
+
+  #nav-items ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  #nav-items ul li, #nav-items.open ul li {
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    opacity: 1;
+  }
+
+  li a {
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 3px;
+    font-size: 16px;
+    color: var(--text-color);
+  }
+}
+
 </style>
 
 <script>
@@ -238,6 +299,10 @@ export default {
         { title: 'Resume', link: '../assets/resume.pdf', target: '_blank' }
       ]
     }
+  },
+  mounted () {
+    this.onResize()
+    window.addEventListener('resize', this.onResize, { passive: true })
   },
   components: {
     darkModeToggle
@@ -255,6 +320,14 @@ export default {
       //   document.getElementById('nav-items').classList.toggle('open')
       // }
       console.log(document.getElementById('nav-items').classList.contains('open'))
+    },
+    onResize () {
+      if (window.innerWidth > 800) {
+        console.log(window.innerWidth)
+        document.getElementById('ham-menu').classList.remove('open')
+        document.getElementById('circle').classList.remove('open')
+        document.getElementById('nav-items').classList.remove('open')
+      }
     }
   }
 }
