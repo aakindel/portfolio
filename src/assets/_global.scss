@@ -31,6 +31,10 @@ $normal-font-weight: 400;
   --accent-color: #c45e24;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   transition: $smooth-speed;
   overflow-x: hidden;  // prevent mobile nav circles from causing scrollbar
