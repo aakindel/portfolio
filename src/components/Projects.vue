@@ -62,25 +62,25 @@ export default {
           links: [
             { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
           ]
-        },
-        {
-          name: 'Pocketbook',
-          description: 'Pocketbook is a book sharing app where users can share the books they have and borrow books from others.',
-          techStack: [
-            'Java',
-            'Android SDK',
-            'Firebase',
-            'JUnit Testing',
-            'Figma',
-            'Trello',
-            'Slack '
-          ],
-          picture: require('../assets/project_code.png'),
-          links: [
-            { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' },
-            { type: 'external', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
-          ]
         }
+        // {
+        //   name: 'Pocketbook',
+        //   description: 'Pocketbook is a book sharing app where users can share the books they have and borrow books from others.',
+        //   techStack: [
+        //     'Java',
+        //     'Android SDK',
+        //     'Firebase',
+        //     'JUnit Testing',
+        //     'Figma',
+        //     'Trello',
+        //     'Slack '
+        //   ],
+        //   picture: require('../assets/project_code.png'),
+        //   links: [
+        //     { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' },
+        //     { type: 'external', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
+        //   ]
+        // }
       ]
     }
   },
