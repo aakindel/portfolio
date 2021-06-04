@@ -334,7 +334,7 @@ export default {
         { title: 'About', link: '/#about', target: '_self' },
         { title: 'Projects', link: '/#projects', target: '_self' },
         { title: 'Contact', link: '/#contact', target: '_self' },
-        { title: 'Resume', link: '../assets/resume.pdf', target: '_blank' }
+        { title: 'Resume', link: '/resume.pdf', target: '_blank' }
       ]
     }
   },
