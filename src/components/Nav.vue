@@ -2,7 +2,7 @@
   <nav class="container">
     <darkModeToggle class="mobile-dark"></darkModeToggle>
 
-    <a href="/"><div class="page-title">Ayo Akindele</div></a>
+    <div class="page-title"><a href="/">Ayo Akindele</a></div>
 
     <div class="ham-container">
       <!-- ham menu from https://codepen.io/designcouch/pen/Atyop -->
@@ -44,6 +44,12 @@ $ham-color: #d3531a;
 
 .page-title {
   font-size: 1.2rem;
+  z-index: 4;
+}
+.page-title a {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 a {
@@ -141,10 +147,11 @@ nav {
   justify-content: center;
   align-items: center;
   z-index: 5;
-  top: 0px;
-  right: 0px;
-  height: 400px;
-  width: 400px;
+  top: -20px;
+  right: -500px;
+  // right: -35px;
+  height: 440px;
+  width: 365px;
 }
 
 #nav-items ul {
@@ -152,13 +159,13 @@ nav {
   // right: 500px;
   height: 100%;
   width: 100%;
-  padding-left: 50px;
-  padding-top: 30px;
+  z-index: 3;
+  // padding-left: 50px;
+  // padding-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 li a {
@@ -203,6 +210,7 @@ li a:hover {
 
 #nav-items.open {
   display: flex;
+  right: -35px;
 }
 
 #nav-items.open li {
@@ -235,14 +243,14 @@ li a:hover {
   width: 150px;
   right: 10px;
   top: 20px;
-  z-index: -2;
+  z-index: 6;
   transition: 0.1s;
 }
 
 #circle.open {
   position: absolute;
-  height: 490px;
-  width: 460px;
+  height: 480px;
+  width: 400px;
   background-color: #324e8ba8;
   color: white;
   z-index: 1;
@@ -292,13 +300,17 @@ li a:hover {
     align-items: center;
   }
 
-  .desktop-nav-items ul li, #nav-items.open ul li {
+  .desktop-nav-items ul li {
     list-style-type: none;
     display: inline-block;
     text-align: center;
     margin-right: 0px;
     margin-bottom: 0px;
     opacity: 1;
+  }
+
+  #nav-items {
+    display: none;
   }
 
   li a {
@@ -326,9 +338,25 @@ export default {
       ]
     }
   },
+  created () {
+    window.addEventListener('click', (e) => {
+      if (document.getElementById('nav-items').classList.contains('open') && !this.$el.contains(e.target)) {
+        this.toggleHam()
+      }
+    })
+    window.addEventListener('scroll', (e) => {
+      if (document.getElementById('nav-items').classList.contains('open') && !this.$el.contains(e.target)) {
+        this.removeHam()
+      }
+    })
+  },
   mounted () {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
+  },
+  unmounted () {
+    window.removeEventListener('click')
+    window.removeEventListener('scroll')
   },
   components: {
     darkModeToggle
@@ -340,16 +368,14 @@ export default {
       document.getElementById('nav-items').classList.toggle('open')
     },
     removeHam () {
-      // if (document.getElementById('nav-items').classList.contains('open')) {
-      //   document.getElementById('ham-menu').classList.toggle('open')
-      //   document.getElementById('circle').classList.toggle('open')
-      //   document.getElementById('nav-items').classList.toggle('open')
-      // }
-      console.log(document.getElementById('nav-items').classList.contains('open'))
+      if (document.getElementById('nav-items').classList.contains('open')) {
+        document.getElementById('ham-menu').classList.toggle('open')
+        document.getElementById('circle').classList.toggle('open')
+        document.getElementById('nav-items').classList.toggle('open')
+      }
     },
     onResize () {
       if (window.innerWidth > 800) {
-        console.log(window.innerWidth)
         document.getElementById('ham-menu').classList.remove('open')
         document.getElementById('circle').classList.remove('open')
         document.getElementById('nav-items').classList.remove('open')

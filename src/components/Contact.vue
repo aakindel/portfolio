@@ -32,4 +32,12 @@ p {
   margin-bottom: 35px;
 }
 
+a {
+  margin: 45px 0;
+}
+
+.active-cta {
+  margin: 0;
+}
+
 </style>
