@@ -25,9 +25,9 @@
 }
 
 .heading {
-  font-size: clamp(2.0rem, 5.8vw, 4rem);
+  font-size: clamp(1.3rem, 5.8vw, 4rem);
   font-weight: $bold-font-weight;
-  line-height: clamp(3.0rem, 8vw, 5rem);
+  line-height: clamp(2.2rem, 8vw, 5rem);
 }
 
 .subheading {
