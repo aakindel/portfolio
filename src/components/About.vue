@@ -16,7 +16,7 @@
         <ul class="recent-tech">
           <li :key="tech" v-for="tech in recentTech">{{tech}}</li>
         </ul>
-        <a href="../assets/resume.pdf" target="_blank"><button class="active-cta">View My Resume</button></a>
+        <a href="/resume.pdf" target="_blank"><button class="active-cta">View My Resume</button></a>
       </div>
       <div class="img-box">
         <img class="pic" src="../assets/portfolio_pic.jpg" alt="About Me" />
