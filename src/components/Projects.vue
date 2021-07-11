@@ -136,17 +136,16 @@ export default {
   display: block;
   font-size: 25px;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .mobile-wbp {
   margin-bottom: 10px;
-  line-height: 150%;
+  line-height: 160%;
 }
 
 .wbp {
   margin-bottom: 25px;
-  line-height: 150%;
+  line-height: 160%;
 }
 
 .img-box {
@@ -183,7 +182,7 @@ export default {
   grid-column: 1 / -1;
   // grid-row: 3 / 7;
   grid-row: 1 / -1;
-  font-size: 17px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,6 +196,8 @@ export default {
 .mobile-project-top-bar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .word-box {

@@ -45,7 +45,8 @@ export default {
 <style scoped>
 
 .text-box {
-  font-size: 17px;
+  font-size: 16px;
+  line-height: 160%;
   margin: 0 auto;
   max-width: 550px;
 }
@@ -92,7 +93,7 @@ button {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    max-width: 855px;
+    max-width: 870px;
     margin: 0 auto;
   }
 
