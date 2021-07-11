@@ -7,6 +7,29 @@
         <div class="project-name-container">
           <span class="project-span"><h2 class="project-name">{{project.name}}</h2></span>
         </div>
+        <div class="box mobile-word-box">
+          <div class="mobile-project-top-bar">
+            <span class="mobile-project-name">{{project.name}}</span>
+            <p class="mobile-external-links"
+                    :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}"
+            >
+              <span v-for="link in project.links" :key="link">
+                <a :href="link.target" target="_blank">
+                  <github class="svg-icon icon" v-if="link.type == 'github'"></github>
+                  <external class="svg-icon-stroke icon" v-if="link.type == 'external'"></external>
+                </a>
+              </span>
+            </p>
+          </div>
+          <p class="mobile-wbp">{{project.description}}</p>
+          <div>
+            <ul class="mobile-tech-stack">
+              <p style="font-size: 14px; font-weight: 700;"
+                :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">Tools used</p><span>:</span>
+              <li :key="tech" v-for="tech in project.techStack">{{tech}}</li>
+            </ul>
+          </div>
+        </div>
         <div class="box word-box">
           <span class="mobile-project-name" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.name}}</span>
           <p class="wbp" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.description}}</p>
@@ -21,9 +44,14 @@
             </span>
           </p>
           <!-- <external class="svg-icon-stroke"></external> -->
-          <ul class="tech-stack" :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}">
-            <li :key="tech" v-for="tech in project.techStack">{{tech}}</li>
-          </ul>
+          <div>
+            <p style="margin-bottom: 10px;"
+              :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">Tools used:</p>
+            <ul class="tech-stack" :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}">
+              <li :key="tech" :style="!(index % 2) ? {'margin-right': '25px'} : {'margin-left': '25px'}"
+                v-for="tech in project.techStack">{{tech}}</li>
+            </ul>
+          </div>
         </div>
         <div class="box img-box">
           <img class="pic" :src="project.picture" :alt="project.name"
@@ -100,18 +128,6 @@ export default {
   // grid-template-columns: 150px 1fr 150px;
 }
 
-.project-content {
-  display: grid;
-  // align-items: center;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(8, 1fr);
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // position: relative;
-  /* height: 450px; */
-}
-
 .project-name-container {
   display: none;
 }
@@ -120,15 +136,22 @@ export default {
   display: block;
   font-size: 25px;
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+}
+
+.mobile-wbp {
+  margin-bottom: 10px;
+  line-height: 150%;
 }
 
 .wbp {
   margin-bottom: 25px;
+  line-height: 150%;
 }
 
 .img-box {
   position: relative;
+  // filter: brightness(0.5);
 }
 
 .img-box::before {
@@ -138,7 +161,7 @@ export default {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: var(--bg-color-faded);
+  // background: var(--bg-color-faded);
   z-index: 1;
 }
 
@@ -149,30 +172,51 @@ export default {
   display: block;
   transition: 0.3s;
   border-radius: 5px;
-  filter: grayscale(40%) blur(0.6px);
+  // filter: grayscale(40%) blur(0.6px);
+  filter: brightness(var(--image-tint));
   // opacity: 0.25;
   z-index: -2;
 }
 
-// .project-content:hover {
-//   filter: grayscale(0%) blur(0px);
-//   // opacity: 0.25;
-//   z-index: -2;
-// }
+.mobile-word-box {
+  // grid-area: 2 / 1 / 8/ 13;
+  grid-column: 1 / -1;
+  // grid-row: 3 / 7;
+  grid-row: 1 / -1;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // gap: space-between;
+  // margin-top: 15px;
+  padding-right: 20px;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.mobile-project-top-bar {
+  display: flex;
+  justify-content: space-between;
+}
 
 .word-box {
   // grid-area: 2 / 1 / 8/ 13;
   grid-column: 1 / -1;
   // grid-row: 3 / 7;
   grid-row: 1 / -1;
-  display: flex;
+  font-size: 17px;
+  display: none;
   flex-direction: column;
   justify-content: center;
   // gap: space-between;
-  color: var(--sharp-text-color);
   // margin-top: 15px;
-  padding: 0 40px;
+  padding-right: 20px;
   z-index: 2;
+  margin-bottom: 30px;
+}
+
+.mobile-external-links a {
+  margin-left: 15px;
 }
 
 .external-links {
@@ -198,6 +242,7 @@ export default {
   font-size: 1.2rem;
   text-decoration: none;
   color: var(--text-color);
+  transition: 0.1s;
 }
 
 .down-icon {
@@ -215,6 +260,21 @@ export default {
   color: var(--accent-color);
 }
 
+.mobile-tech-stack {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  // background: #7bcbfaa2;
+  // margin-top: auto;
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.mobile-tech-stack li {
+  margin: 0 3px;
+  margin-left: 18px;
+}
+
 .tech-stack {
   list-style-type: none;
   display: flex;
@@ -228,10 +288,6 @@ export default {
   content: "▹";
   margin-right: 6px;
   line-height: 12px;
-}
-
-.tech-stack li {
-  margin-right: 9px;
 }
 
 button {
@@ -288,7 +344,6 @@ button {
     margin-left: auto;
     margin-right: auto;
     transition: 0.3s;
-    filter: grayscale(0%) blur(0px);
     opacity: 1;
     z-index: -2;
   }
@@ -297,14 +352,20 @@ button {
     display: none;
   }
 
+  .mobile-word-box {
+    display: none;
+  }
+
   .word-box {
     width: 40%;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 0px;
   }
 
   .external-links {
-    margin-top: auto;
+    // margin-top: auto;
     display: flex;
   }
 
@@ -334,7 +395,6 @@ button {
     display: flex;
     flex-wrap: wrap;
     margin-top: auto;
-    font-size: 14px;
   }
 
   .tech-stack li::before {
@@ -344,7 +404,7 @@ button {
   }
 
   .tech-stack li {
-    margin-right: 9px;
+    margin-bottom: 5px;
   }
 
 }

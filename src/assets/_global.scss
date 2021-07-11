@@ -15,12 +15,14 @@ $normal-font-weight: 400;
   --text-color: #2c3e50;
   --sharp-text-color: #000000;
   --active-text-color: #f1f0f0;
-  --bg-color: #f3f3f3;
+  --bg-color: #f1efec;
   --bg-color-faded: #f3f3f3d2;
   --accent-color: #e06d2a;
   --light-accent-color: #d3511a6c;
   // --light-accent-color: #eeb99b;
   --primary-color: #5b8bf3;
+  --image-tint: 1.0;
+  --light-image-tint: 110%;
 }
 
 :root.dark-mode {
@@ -29,6 +31,8 @@ $normal-font-weight: 400;
   --bg-color: #212121;
   --bg-color-faded: #212121d2;
   --accent-color: #c45e24;
+  --image-tint: 0.8;
+  --light-image-tint: 0.9;
 }
 
 html {
@@ -81,7 +85,7 @@ body {
   z-index: -1;
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 1280px) {
   .container {
     width: 70%;
   }

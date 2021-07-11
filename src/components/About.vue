@@ -59,7 +59,7 @@ export default {
   /* css filter generator for coloring images: https://codepen.io/sosuke/pen/Pjoqqp */
   width: 300px;
   border-radius: 5px;
-  filter: invert(13%) sepia(89%) saturate(37%) hue-rotate(227deg) brightness(110%) contrast(90%);
+  filter: invert(13%) sepia(89%) saturate(37%) hue-rotate(227deg) brightness(var(--light-image-tint)) contrast(90%);
   transition: 0.3s;
 }
 
