@@ -8,9 +8,8 @@
           I love tackling
           interesting problems and developing elegant software solutions that both
           solve the immediate problem and solve potential problems before they ever come up.
-          I'm passionate about being curious and about collaborating with others and
-          learning constantly from them as we strive to improve upon the past and build
-          for the future. <br /> <br />
+          I'm passionate about pursuing creativity and about collaborating with others to improve upon
+          the past while building for the future. <br /> <br />
           Here are some of the technologies and tools that I have experience with:
         </p>
         <ul class="recent-tech">
@@ -31,9 +30,9 @@ export default {
   data () {
     return {
       recentTech: [
+        'React',
         'Vue',
         'Android SDK',
-        'Java',
         'JavaScript',
         'HTML & CSS',
         'Python'
