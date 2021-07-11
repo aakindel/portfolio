@@ -46,6 +46,8 @@ export default {
 
 .text-box {
   font-size: 17px;
+  margin: 0 auto;
+  max-width: 550px;
 }
 
 .img-box {
@@ -92,6 +94,10 @@ button {
     justify-content: space-between;
     max-width: 855px;
     margin: 0 auto;
+  }
+
+  .text-box {
+    width: 100%;
   }
 
   .img-box {

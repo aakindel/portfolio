@@ -22,13 +22,13 @@
 
 // toggle could misrender for some px sizes of $toggle-dimensions (e.g. 40px)
 $toggle-dimensions: 35px;
-$arc-dimensions: $toggle-dimensions / 2;
-$ray-height: $arc-dimensions / 8;
-$ray-width: $ray-height * 3;
+$arc-dimensions: 17px;
+$ray-height: 2px;
+$ray-width: 6px;
 $no-opacity: 0;
 $light-opacity: 0.25;
 $full-opacity: 1;
-$ray-dist-from-sun: $arc-dimensions * 0.8;
+$ray-dist-from-sun: 14px;
 $smooth-speed: 0.3s;
 $quick-speed: 0.2s;
 $light-color: #f5f5f5;
@@ -77,27 +77,30 @@ $darker-color: #212121;
 }
 
 .dmtoggle .darc {
+  pointer-events: none;
   background: $light-bg-color; // hide the "moon bite" in light mode
   transform: translateX($arc-dimensions*2);  // "moon bite" moves out and to the right
 }
 
 :root.dark-mode .dmtoggle .darc {
+  pointer-events: auto;
   background: $darker-color;  // show the "moon bite" in dark mode
   transform: translateX($arc-dimensions/2.5); // offset .darc to make crescent moon shape
 }
 
 .dmtoggle .ray {
+  margin-left: 1px;
   width: $ray-width;
   height: $ray-height;
   border-radius: $ray-height;
 }
 
-.dmtoggle .ray.one { transform: rotate(0deg) translateX($ray-dist-from-sun); }
+.dmtoggle .ray.one { transform: rotate(0deg) translateX($ray-dist-from-sun - 1px); }
 .dmtoggle .ray.two { transform: rotate(45deg) translateX($ray-dist-from-sun); }
 .dmtoggle .ray.three { transform: rotate(90deg) translateX($ray-dist-from-sun); }
 .dmtoggle .ray.four { transform: rotate(135deg) translateX($ray-dist-from-sun); }
 .dmtoggle .ray.five { transform: rotate(180deg) translateX($ray-dist-from-sun); }
-.dmtoggle .ray.six { transform: rotate(225deg) translateX($ray-dist-from-sun); }
+.dmtoggle .ray.six { transform: rotate(225deg) translateX($ray-dist-from-sun + 1px); }
 .dmtoggle .ray.seven { transform: rotate(270deg) translateX($ray-dist-from-sun); }
 .dmtoggle .ray.eight { transform: rotate(315deg) translateX($ray-dist-from-sun); }
 
