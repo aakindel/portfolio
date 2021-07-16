@@ -21,7 +21,7 @@
               </span>
             </p>
           </div>
-          <p class="mobile-wbp">{{project.description}}</p>
+          <p class="mobile-wbp">{{project.name}}{{project.description}}</p>
           <div>
             <ul class="mobile-tech-stack">
               <p style="font-size: 14px; font-weight: 700;"
@@ -32,7 +32,9 @@
         </div>
         <div class="box word-box">
           <span class="mobile-project-name" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.name}}</span>
-          <p class="wbp" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.description}}</p>
+          <p class="wbp" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">
+            <span class="desktop-project-name">{{project.name}}</span>{{project.description}}
+          </p>
           <p class="external-links"
                    :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}"
           >
@@ -54,8 +56,10 @@
           </div>
         </div>
         <div class="box img-box">
-          <img class="pic" :src="project.picture" :alt="project.name"
-                    />
+          <img class="pic" :src="project.picture" :alt="project.name" v-if="project.type == 'img'" />
+          <video playsinline autoplay muted loop class="vid" :alt="project.name" v-if="project.type == 'vid'" >
+            <source :src="project.video" type="video/mp4" />
+          </video>
         </div>
       </div>
     </div>
@@ -76,7 +80,7 @@ export default {
       projects: [
         {
           name: 'Pocketbook',
-          description: 'Pocketbook is a book sharing app where users can share the books they have and borrow books from others.',
+          description: ' is a book sharing app where users can share the books they have and borrow books from others.',
           techStack: [
             'Java',
             'Android SDK',
@@ -87,28 +91,26 @@ export default {
             'Slack '
           ],
           picture: require('../assets/project_pocketbook.png'),
+          type: 'img',
           links: [
             { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
           ]
+        },
+        {
+          name: 'Today\'s To-Dos',
+          description: ' is a to-do list manager that helps users work through their temporary, daily tasks and to-dos.',
+          techStack: [
+            'React',
+            'Next.js',
+            'JavaScript'
+          ],
+          video: require('../assets/to_do_demo.mp4'),
+          type: 'vid',
+          links: [
+            { type: 'github', target: 'https://github.com/aakindel/to-do-today' },
+            { type: 'external', target: 'https://todays-to-dos.netlify.app/' }
+          ]
         }
-        // {
-        //   name: 'Pocketbook',
-        //   description: 'Pocketbook is a book sharing app where users can share the books they have and borrow books from others.',
-        //   techStack: [
-        //     'Java',
-        //     'Android SDK',
-        //     'Firebase',
-        //     'JUnit Testing',
-        //     'Figma',
-        //     'Trello',
-        //     'Slack '
-        //   ],
-        //   picture: require('../assets/project_code.png'),
-        //   links: [
-        //     { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' },
-        //     { type: 'external', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
-        //   ]
-        // }
       ]
     }
   },
@@ -167,10 +169,24 @@ export default {
 .pic {
   height: 100%;
   width: 100%;
-  object-fit: contain;  // pic is vert. centered if text overflows
+  object-fit: cover;  // pic is vert. centered if text overflows
   display: block;
   transition: 0.3s;
   border-radius: 5px;
+  // filter: grayscale(40%) blur(0.6px);
+  filter: brightness(var(--image-tint));
+  // opacity: 0.25;
+  z-index: -2;
+}
+
+.vid {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: 0.3s;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 1px rgba(190, 190, 190, 0.2);
   // filter: grayscale(40%) blur(0.6px);
   filter: brightness(var(--image-tint));
   // opacity: 0.25;
@@ -313,6 +329,7 @@ button {
 
   .project-name-container {
     display: block;
+    opacity: 1;
     position: absolute;
     width: 100%;
     text-align: center;
@@ -320,6 +337,21 @@ button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     z-index: -1;
+    transition: $smooth-speed;
+  }
+
+  .project-content:hover .project-name-container {
+    opacity: 0;
+    transition: $smooth-speed;
+  }
+
+  .project-content .desktop-project-name {
+    transition: $smooth-speed;
+  }
+
+  .project-content:hover .desktop-project-name {
+    font-weight: 500;
+    transition: $smooth-speed;
   }
 
   .project-span {
@@ -339,6 +371,17 @@ button {
   }
 
   .pic {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 0.3s;
+    opacity: 1;
+    z-index: -2;
+  }
+
+  .vid {
     max-height: 100%;
     max-width: 100%;
     display: block;
