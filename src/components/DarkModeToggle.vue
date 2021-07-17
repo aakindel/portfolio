@@ -115,7 +115,13 @@ $darker-color: #212121;
 export default {
   methods: {
     toggleDarkTheme () {
-      document.documentElement.classList.toggle('dark-mode')
+      if (document.documentElement.classList.contains('dark-mode')) {
+        document.documentElement.classList.remove('dark-mode')
+        localStorage.setItem('theme', 'light')
+      } else {
+        document.documentElement.classList.add('dark-mode')
+        localStorage.setItem('theme', 'dark')
+      }
     }
   }
 }

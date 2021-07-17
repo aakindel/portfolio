@@ -17,6 +17,14 @@ import appProjects from './components/Projects'
 import appContact from './components/Contact'
 import appFooter from './components/Footer'
 
+const localTheme = localStorage.getItem('theme')
+
+if (localTheme === 'dark') {
+  document.documentElement.classList.add('dark-mode')
+} else if (localTheme === 'light') {
+  document.documentElement.classList.remove('dark-mode')
+}
+
 export default {
   components: {
     appNav,

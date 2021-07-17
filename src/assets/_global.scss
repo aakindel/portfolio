@@ -22,7 +22,7 @@ $normal-font-weight: 400;
   // --light-accent-color: #eeb99b;
   --primary-color: #5b8bf3;
   --image-tint: 1.0;
-  --light-image-tint: 110%;
+  --light-image-tint: 1.1;
 }
 
 :root.dark-mode {
@@ -31,8 +31,8 @@ $normal-font-weight: 400;
   --bg-color: #212121;
   --bg-color-faded: #212121d2;
   --accent-color: #c45e24;
-  --image-tint: 0.8;
-  --light-image-tint: 0.9;
+  --image-tint: 0.9;
+  --light-image-tint: 1.0;
 }
 
 html {
