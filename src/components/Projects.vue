@@ -1,72 +1,171 @@
 <template>
   <div class="container" id="projects">
-    <h1 class="sh_container sh_left"><span class="section-heading">Projects</span></h1>
+    <h1 class="sh_container sh_left">
+      <span class="section-heading">Projects</span>
+    </h1>
     <div class="project-grid">
-      <div class="project-content" v-for="(project, index) in projects"
-           :style="!(index % 2) ? {'flex-direction': 'row'} : {'flex-direction': 'row-reverse'}" :key="project">
+      <div
+        class="project-content"
+        v-for="(project, index) in projects"
+        :style="
+          !(index % 2)
+            ? { 'flex-direction': 'row' }
+            : { 'flex-direction': 'row-reverse' }
+        "
+        :key="project"
+      >
         <div class="project-name-container">
-          <span class="project-span"><h2 class="project-name">{{project.name}}</h2></span>
+          <span class="project-span"
+            ><h2 class="project-name">{{ project.name }}</h2></span
+          >
         </div>
         <div class="box mobile-word-box">
           <div class="mobile-project-top-bar">
-            <span class="mobile-project-name">{{project.name}}</span>
-            <p class="mobile-external-links"
-                    :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}"
+            <span class="mobile-project-name">{{ project.name }}</span>
+            <p
+              class="mobile-external-links"
+              :style="
+                !(index % 2)
+                  ? { 'justify-content': 'flex-start' }
+                  : { 'justify-content': 'flex-end' }
+              "
             >
               <span v-for="link in project.links" :key="link">
                 <a :href="link.target" target="_blank">
-                  <github class="svg-icon icon" v-if="link.type == 'github'"></github>
-                  <external class="svg-icon-stroke icon" v-if="link.type == 'external'"></external>
+                  <github
+                    class="svg-icon icon"
+                    v-if="link.type == 'github'"
+                  ></github>
+                  <external
+                    class="svg-icon-stroke icon"
+                    v-if="link.type == 'external'"
+                  ></external>
                 </a>
               </span>
             </p>
           </div>
-          <p class="mobile-wbp">{{project.name}}{{project.description}}</p>
+          <p class="mobile-wbp">{{ project.name }}{{ project.description }}</p>
           <div>
             <ul class="mobile-tech-stack">
-              <p style="font-size: 14px; font-weight: 700;"
-                :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">Tools used</p><span>:</span>
-              <li :key="tech" v-for="tech in project.techStack">{{tech}}</li>
+              <p
+                style="font-size: 14px; font-weight: 700;"
+                :style="
+                  !(index % 2)
+                    ? { 'text-align': 'left' }
+                    : { 'text-align': 'right' }
+                "
+              >
+                Tools used
+              </p>
+              <span>:</span>
+              <li :key="tech" v-for="tech in project.techStack">{{ tech }}</li>
             </ul>
           </div>
         </div>
         <div class="box word-box">
-          <span class="mobile-project-name" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">{{project.name}}</span>
-          <p class="wbp" :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">
-            <span class="desktop-project-name">{{project.name}}</span>{{project.description}}
+          <span
+            class="mobile-project-name"
+            :style="
+              !(index % 2)
+                ? { 'text-align': 'left' }
+                : { 'text-align': 'right' }
+            "
+            >{{ project.name }}</span
+          >
+          <p
+            class="wbp"
+            :style="
+              !(index % 2)
+                ? { 'text-align': 'left' }
+                : { 'text-align': 'right' }
+            "
+          >
+            <span class="desktop-project-name">{{ project.name }}</span
+            >{{ project.description }}
           </p>
-          <p class="external-links"
-                   :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}"
+          <p
+            class="external-links"
+            :style="
+              !(index % 2)
+                ? { 'justify-content': 'flex-start' }
+                : { 'justify-content': 'flex-end' }
+            "
           >
             <span v-for="link in project.links" :key="link">
               <a :href="link.target" target="_blank">
-                <github class="svg-icon icon" v-if="link.type == 'github'"></github>
-                <external class="svg-icon-stroke icon" v-if="link.type == 'external'"></external>
+                <github
+                  class="svg-icon icon"
+                  v-if="link.type == 'github'"
+                ></github>
+                <external
+                  class="svg-icon-stroke icon"
+                  v-if="link.type == 'external'"
+                ></external>
               </a>
             </span>
           </p>
           <!-- <external class="svg-icon-stroke"></external> -->
           <div>
-            <p style="margin-bottom: 10px;"
-              :style="!(index % 2) ? {'text-align': 'left'} : {'text-align': 'right'}">Tools used:</p>
-            <ul class="tech-stack" :style="!(index % 2) ? {'justify-content': 'flex-start'} : {'justify-content': 'flex-end'}">
-              <li :key="tech" :style="!(index % 2) ? {'margin-right': '25px'} : {'margin-left': '25px'}"
-                v-for="tech in project.techStack">{{tech}}</li>
+            <p
+              style="margin-bottom: 10px;"
+              :style="
+                !(index % 2)
+                  ? { 'text-align': 'left' }
+                  : { 'text-align': 'right' }
+              "
+            >
+              Tools used:
+            </p>
+            <ul
+              class="tech-stack"
+              :style="
+                !(index % 2)
+                  ? { 'justify-content': 'flex-start' }
+                  : { 'justify-content': 'flex-end' }
+              "
+            >
+              <li
+                :key="tech"
+                :style="
+                  !(index % 2)
+                    ? { 'margin-right': '25px' }
+                    : { 'margin-left': '25px' }
+                "
+                v-for="tech in project.techStack"
+              >
+                {{ tech }}
+              </li>
             </ul>
           </div>
         </div>
         <div class="box img-box">
-          <img class="pic" :src="project.picture" :alt="project.name" v-if="project.type == 'img'" />
-          <video playsinline autoplay muted loop class="vid" :alt="project.name" v-if="project.type == 'vid'" >
+          <img
+            class="pic"
+            :src="project.picture"
+            :alt="project.name"
+            v-if="project.type == 'img'"
+          />
+          <video
+            playsinline
+            autoplay
+            muted
+            loop
+            class="vid"
+            :alt="project.name"
+            v-if="project.type == 'vid'"
+          >
             <source :src="project.video" type="video/mp4" />
           </video>
         </div>
       </div>
     </div>
     <span class="view-other">
-    <a href="https://github.com/aakindel?tab=repositories" target="_blank">
-      <span>View my other projects on Github. <external class="svg-icon-stroke down-icon"></external></span>
-    </a></span>
+      <a href="https://github.com/aakindel?tab=repositories" target="_blank">
+        <span
+          >View my other projects on Github.
+          <external class="svg-icon-stroke down-icon"></external
+        ></span> </a
+    ></span>
   </div>
 </template>
 
@@ -79,8 +178,54 @@ export default {
     return {
       projects: [
         {
+          name: 'CMPUT 401 Portal',
+          description:
+            ' is a web portal that enables the University of Alberta’s CMPUT 401 administrators to display CMPUT 401 projects.',
+          techStack: [
+            'React',
+            'TypeScript',
+            'Material-UI',
+            'Django',
+            'PostgreSQL'
+          ],
+          picture: require('../assets/project_401_portal.png'),
+          type: 'img',
+          links: [
+            {
+              type: 'external',
+              target: 'http://cmput401.ca/'
+            }
+          ]
+        },
+        {
+          name: 'Plurr Social',
+          description:
+            ' is a social networking web app that allows users to share posts that other users can like and comment on.',
+          techStack: [
+            'React',
+            'JavaScript',
+            'Bootstrap',
+            'Django',
+            'PostgreSQL',
+            'Heroku'
+          ],
+          picture: require('../assets/project_plurr.png'),
+          type: 'img',
+          links: [
+            {
+              type: 'github',
+              target: 'https://github.com/aakindel/CMPUT404-project-socialdistribution'
+            },
+            {
+              type: 'external',
+              target: 'http://plurr.herokuapp.com/'
+            }
+          ]
+        },
+        {
           name: 'Pocketbook',
-          description: ' is a book sharing app where users can share the books they have and borrow books from others.',
+          description:
+            ' is a book sharing app where users can share the books they have and borrow books from others.',
           techStack: [
             'Java',
             'Android SDK',
@@ -93,21 +238,24 @@ export default {
           picture: require('../assets/project_pocketbook.png'),
           type: 'img',
           links: [
-            { type: 'github', target: 'https://github.com/CMPUT301F20T09/PocketBook' }
+            {
+              type: 'github',
+              target: 'https://github.com/CMPUT301F20T09/PocketBook'
+            }
           ]
         },
         {
           name: 'Today\'s To-Dos',
-          description: ' is a to-do list manager that helps users work through their temporary, daily tasks and to-dos.',
-          techStack: [
-            'React',
-            'Next.js',
-            'JavaScript'
-          ],
+          description:
+            ' is a to-do list manager that helps users work through their temporary, daily tasks and to-dos.',
+          techStack: ['React', 'Next.js', 'JavaScript'],
           video: require('../assets/to_do_demo.mp4'),
           type: 'vid',
           links: [
-            { type: 'github', target: 'https://github.com/aakindel/to-do-today' },
+            {
+              type: 'github',
+              target: 'https://github.com/aakindel/to-do-today'
+            },
             { type: 'external', target: 'https://todays-to-dos.netlify.app/' }
           ]
         }
@@ -122,7 +270,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .project-grid {
   display: grid;
   grid-row-gap: 65px;
@@ -156,7 +303,7 @@ export default {
 }
 
 .img-box::before {
-  content: '';
+  content: "";
   display: block;
   border-radius: 4px;
   position: absolute;
@@ -169,7 +316,7 @@ export default {
 .pic {
   height: 100%;
   width: 100%;
-  object-fit: cover;  // pic is vert. centered if text overflows
+  object-fit: cover; // pic is vert. centered if text overflows
   display: block;
   transition: 0.3s;
   border-radius: 5px;
@@ -273,7 +420,8 @@ export default {
   color: var(--primary-color);
 }
 
-.icon:hover, .view-other a:hover {
+.icon:hover,
+.view-other a:hover {
   color: var(--accent-color);
 }
 
@@ -313,7 +461,6 @@ button {
 }
 
 @media (min-width: 800px) {
-
   .project-grid {
     display: grid;
     grid-row-gap: 100px;
@@ -450,7 +597,5 @@ button {
   .tech-stack li {
     margin-bottom: 5px;
   }
-
 }
-
 </style>
