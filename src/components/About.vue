@@ -35,19 +35,19 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       recentTech: [
-        "React",
-        "Vue",
-        "Android SDK",
-        "JavaScript",
-        "HTML & CSS",
-        "Python"
+        'React',
+        'Vue',
+        'Android SDK',
+        'JavaScript',
+        'HTML & CSS',
+        'Python'
       ]
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
